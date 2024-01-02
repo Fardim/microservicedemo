@@ -1,6 +1,4 @@
-using Catalog.API.HostingService;
-using Catalog.API.Interfaces.Manager;
-using Catalog.API.Manager;
+using Discount.API.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHostedService<AppHostedService>();
-builder.Services.AddScoped<IProductManager, ProductManager>();
+builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 
 var app = builder.Build();
 
@@ -21,6 +18,7 @@ var app = builder.Build();
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
